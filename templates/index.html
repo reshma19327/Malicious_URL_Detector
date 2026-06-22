@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Malicious URL Detector</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align:center;
+            margin-top:50px;
+        }
+
+        input{
+            width:400px;
+            padding:10px;
+            font-size:16px;
+        }
+
+        button{
+            padding:10px 20px;
+            font-size:16px;
+        }
+
+        .safe{
+            color:green;
+            font-weight:bold;
+        }
+
+        .malicious{
+            color:red;
+            font-weight:bold;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>Malicious URL Detection System</h1>
+
+<form method="POST">
+
+    <input
+        type="text"
+        name="url"
+        placeholder="Enter URL"
+        required>
+
+    <button type="submit">
+        Predict
+    </button>
+
+</form>
+
+{% if prediction %}
+
+    {% if "Safe" in prediction %}
+        <h2 class="safe">{{ prediction }}</h2>
+    {% else %}
+        <h2 class="malicious">{{ prediction }}</h2>
+    {% endif %}
+
+{% endif %}
+
+</body>
+</html>
